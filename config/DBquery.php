@@ -6,7 +6,6 @@ namespace config;
 class DBquery
 {
 
-
     // этот метод выбирает все данные из таблицы
     public static function findAll($table)
     {
