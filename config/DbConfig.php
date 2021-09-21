@@ -6,7 +6,9 @@ namespace config;
 class DbConfig
 {
 
-    public static function connection($sql)
+    private static $connect;
+
+    public static function connection()
     {
         $dns = 'mysql:host=localhost;dbname=u1322686_demo;charset=utf8';
         $username = 'u1322686_admin';
@@ -17,10 +19,15 @@ class DbConfig
             \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
          );
 
-        $connect = new \PDO($dns, $username, $password, $options);
+        self:: $connect = new \PDO($dns, $username, $password,$options);
 
 
-        return $connect->query($sql);
+    }
+
+
+    public static function myQuery($sql){
+
+        return DbConfig::$connect->query($sql);
 
     }
 

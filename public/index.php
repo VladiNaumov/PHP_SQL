@@ -13,9 +13,14 @@ error_reporting(-1);
     require '../config/DbConfig.php';
 
 
-    // этот метод выбирает все данные из таблицы
+    //
     $sql = DBquery::findAll('posts');
-    $result = DbConfig::connection($sql);
+
+    //
+    DbConfig::connection();
+
+    $result = DbConfig::myQuery($sql);
+
 
 
 echo "<table><tr><th>category_id</th><th>title</th><th>excerpt</th><th>text</th><th>keywords</th><th>discription</th></tr>";
