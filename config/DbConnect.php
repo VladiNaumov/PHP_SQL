@@ -3,10 +3,9 @@
 namespace config;
 
 
-class DbConfig
+class DbConnect
 {
 
-    private static $connect;
 
     public static function connection()
     {
@@ -19,17 +18,13 @@ class DbConfig
             \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC,
          );
 
-        self:: $connect = new \PDO($dns, $username, $password,$options);
+        return  new \PDO($dns, $username, $password,$options);
 
 
     }
 
 
-    public static function myQuery($sql){
 
-        return DbConfig::$connect->query($sql);
-
-    }
 
 
 

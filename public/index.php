@@ -1,6 +1,6 @@
 <?php
 
-use config\DbConfig;
+use config\DbConnect;
 use config\DBquery;
 
 error_reporting(-1);
@@ -10,16 +10,15 @@ error_reporting(-1);
  //$query = rtrim($_SERVER['QUERY_STRING'], '/');
 
     require '../config/DBquery.php';
-    require '../config/DbConfig.php';
+    require '../config/DbConnect.php';
 
+    //подключение к БД
+    DBquery::setConnection();
 
-    //
-    $sql = DBquery::findAll('posts');
-
-    //
-    DbConfig::connection();
-
-    $result = DbConfig::myQuery($sql);
+    //выполнение запроса
+   // $result = DBquery::selfAll('posts');
+    $result = DBquery::demo('SELECT * FROM posts');
+    //$result = DBquery::finLike('2', 'posts');
 
 
 
@@ -38,9 +37,6 @@ echo "<table><tr><th>category_id</th><th>title</th><th>excerpt</th><th>text</th>
     echo "</tr>";
     }
     echo "</table>";
-
-
-
 
 
 /*

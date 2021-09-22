@@ -6,19 +6,38 @@ namespace config;
 class DBquery
 {
 
-    // этот метод выбирает все данные из таблицы
-    public static function findAll($table): string
+    private static $connection;
+
+
+    public static function setConnection(): void
     {
-        return "SELECT * FROM {$table}";
+        self::$connection = DbConnect::connection();
+    }
+
+
+    public static function selfAll($table){
+
+
+        $sql = "SELECT * FROM {$table}";
+
+        return self::$connection->query($sql);
 
     }
 
 
-    public static function finLike( $field, $table): string
+    public static function finLike($field, $table): string
     {
+        $sql = "SELECT * FROM $table WHERE $field = ? LIMIT 1";
 
-        return  "SELECT * FROM $table WHERE $field LIKE ? ";
+        return self::$connection->query($sql);
     }
 
+
+
+
+    public static function demo($sql)
+    {
+        return self::$connection->query($sql);
+    }
 
 }
