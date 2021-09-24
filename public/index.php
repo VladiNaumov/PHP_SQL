@@ -29,6 +29,8 @@ error_reporting(-1);
 echo "<table><tr><th>category_id</th><th>title</th><th>excerpt</th><th>text</th><th>keywords</th><th>discription</th></tr>";
 
     while ($row = $result->fetch())
+   // foreach ($result as $row)
+
     {
 
     echo "<tr>";

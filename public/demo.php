@@ -20,8 +20,8 @@ R::fancyDebug(TRUE);
 
 // CREATE
 // $cat = R::dispense('category');
-//$cat->title = 'Category 1';
-//$id = R::store($cat);
+// $cat->title = 'Category 1';
+// $id = R::store($cat);
 // var_dump($id);
 
 
@@ -39,15 +39,40 @@ R::fancyDebug(TRUE);
 // echo $cat->title. '<br>';
 
 //DELETE
-//$cat = R::load('category',10);
-//R::trash($cat);
+// $cat = R::load('category',10);
+// R::trash($cat);
 
-//R::wipe('category'); //полное удаление таблицы
+// R::wipe('category'); //полное удаление таблицы
 
 //READ ALL
-$cat = R::findAll('posts');
+// $cat = R::findAll('posts');
 // $cat = R::findAll('category', 'id > ?' [2]); //получаем запись где ID больше двух
 // $cat = R::findAll('category', 'title LIKE ?', ['% cat %']);
 // $cat = R::findOne('category', 'ID = 2');
-echo '<pre>';
-print_r($cat);
+//echo '<pre>';
+//print_r($cat);
+
+
+$result = R::findAll('posts');
+
+
+
+echo "<table><tr><th>category_id</th><th>title</th><th>excerpt</th><th>text</th><th>keywords</th><th>discription</th></tr>";
+
+
+    foreach ($result as $value)
+    {
+
+    echo "<tr>";
+    echo "<td>" . $value["category_id"] . "</td>";
+    echo "<td>" . $value["title"] . "</td>";
+    echo "<td>" . $value["excerpt"] . "</td>";
+    echo "<td>" . $value["text"] . "</td>";
+    echo "<td>" . $value["keywords"] . "</td>";
+    echo "<td>" . $value["discription"] . "</td>";
+
+
+
+    echo "</tr>";
+    }
+echo "</table>";
