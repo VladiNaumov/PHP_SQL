@@ -25,17 +25,8 @@ class DBquery
     }
 
 
-    public static function finLike($field, $table): string
-    {
-        $sql = "SELECT * FROM $table WHERE $field = ? LIMIT 1";
 
-        return self::$connection->query($sql);
-    }
-
-
-
-
-    public static function demo($sql)
+    public static function querySql($sql)
     {
         return self::$connection->query($sql);
     }

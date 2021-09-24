@@ -11,14 +11,18 @@ error_reporting(-1);
 
     require '../config/DBquery.php';
     require '../config/DbConnect.php';
+    require '../config/RedBean.php';
 
     //подключение к БД
     DBquery::setConnection();
 
-    //выполнение запроса
+    // выполнение запроса
    // $result = DBquery::selfAll('posts');
-    $result = DBquery::demo('SELECT * FROM posts');
-    //$result = DBquery::finLike('2', 'posts');
+
+   $result = DBquery::querySql('SELECT * FROM posts');
+
+    // $result = DBquery::finLike('2', 'posts');
+
 
 
 
@@ -46,5 +50,7 @@ echo "<table><tr><th>category_id</th><th>title</th><th>excerpt</th><th>text</th>
  * $DEMO = new DemoDemo();
  * $DEMO->myDemo();
  * $DEMO->myDemo();
+ *
+ * Дваеточие - это обращение к статическому методу
  * $DEMO::myStaticDemo();
  */
